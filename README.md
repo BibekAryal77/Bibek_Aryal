@@ -27,36 +27,6 @@ personal_website/
     └── contact.html         # Contact page
 ```
 
-## How to run it locally (Windows PowerShell)
-
-1. Open PowerShell and go to the `personal_website` folder.
-2. Create a virtual environment (a private, isolated copy of Python for this project):
-   ```
-   python -m venv venv
-   ```
-3. Activate the virtual environment:
-   ```
-   venv\Scripts\activate
-   ```
-   You should see `(venv)` appear at the start of your PowerShell prompt.
-4. Install the required packages (just Flask):
-   ```
-   pip install -r requirements.txt
-   ```
-5. Run the website:
-   ```
-   python app.py
-   ```
-6. Open your browser and go to:
-   ```
-   http://127.0.0.1:5000
-   ```
-
-To stop the server, go back to PowerShell and press `Ctrl + C`.
-
-Next time you want to run the site, you only need steps 3, 5, and 6
-(the virtual environment and packages are already set up).
-
 ## How everything works
 
 ### 1. What each file does
@@ -149,9 +119,6 @@ filename in `templates/index.html`:
 ```html
 <img src="{{ url_for('static', filename='images/profile.jpg') }}" ...>
 ```
-
-### 9. How to run the website locally
-See the **"How to run it locally"** section above.
 
 ## Publishing to GitHub Pages
 

@@ -158,7 +158,6 @@ publications = [
 # Update these links with your real information.
 contact_info = {
     "email": "aryal.bibek.biz@gmail.com",
-    "phone": "573-529-4084",
     "linkedin": "https://www.linkedin.com/in/bibekaryalin",
     "scholar": "https://scholar.google.com/citations?user=your-id",
     "github": "https://github.com/BibekAryal77",

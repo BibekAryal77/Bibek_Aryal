@@ -7,6 +7,8 @@
 #     venv\Scripts\python freeze.py
 # Then commit and push the docs/ folder to GitHub.
 
+from pathlib import Path
+
 from flask_frozen import Freezer
 from app import app
 
@@ -23,4 +25,9 @@ freezer = Freezer(app)
 
 if __name__ == "__main__":
     freezer.freeze()
+
+    # Tell GitHub Pages to skip Jekyll processing and serve the files as-is.
+    # Frozen-Flask doesn't know about this file, so we recreate it every run.
+    (Path(app.config["FREEZER_DESTINATION"]) / ".nojekyll").touch()
+
     print("Static site generated in the docs/ folder.")
