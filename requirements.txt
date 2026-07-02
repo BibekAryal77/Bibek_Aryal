@@ -1,1 +1,4 @@
 Flask==3.0.3
+
+# Used by freeze.py to generate a static version of the site for GitHub Pages
+Frozen-Flask==1.0.2

@@ -24,5 +24,36 @@
         <li>{{ interest }}</li>
         {% endfor %}
     </ul>
+
+    <h2>Education</h2>
+    <!-- Each item in "education" is a dictionary, so we use dot notation like item.degree -->
+    {% for item in education %}
+    <div class="timeline-item">
+        <h3>{{ item.degree }}</h3>
+        <p class="timeline-meta">{{ item.school }} &middot; {{ item.years }}</p>
+    </div>
+    {% endfor %}
+
+    <h2>Experience</h2>
+    {% for job in experience %}
+    <div class="timeline-item">
+        <h3>{{ job.title }}</h3>
+        <p class="timeline-meta">{{ job.place }} &middot; {{ job.years }}</p>
+        <ul class="interest-list">
+            <!-- job.details is itself a list, so this is a for loop inside a for loop -->
+            {% for point in job.details %}
+            <li>{{ point }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+
+    <h2>Publications</h2>
+    {% for pub in publications %}
+    <div class="timeline-item">
+        <h3>{{ pub.title }}</h3>
+        <p class="timeline-meta">{{ pub.authors }} &middot; {{ pub.venue }} &middot; {{ pub.year }}</p>
+    </div>
+    {% endfor %}
 </section>
 {% endblock %}

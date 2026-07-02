@@ -153,6 +153,33 @@ filename in `templates/index.html`:
 ### 9. How to run the website locally
 See the **"How to run it locally"** section above.
 
+## Publishing to GitHub Pages
+
+GitHub Pages can only serve plain HTML/CSS/JS files — it cannot run a Python server. So to put
+this site online, `freeze.py` uses a tool called **Frozen-Flask** to visit every route in
+`app.py` and save the result as real `.html` files inside a `docs/` folder.
+
+1. Make sure your virtual environment is active (`venv\Scripts\activate`) and dependencies are
+   installed (`pip install -r requirements.txt`).
+2. Regenerate the static site any time you change the site's content:
+   ```
+   python freeze.py
+   ```
+   This overwrites the `docs/` folder with fresh HTML files.
+3. Commit and push the updated `docs/` folder:
+   ```
+   git add -A
+   git commit -m "Update static site"
+   git push
+   ```
+4. In the GitHub repo, go to **Settings → Pages**, and under "Build and deployment" set
+   **Source** to "Deploy from a branch", branch **main**, folder **/docs**.
+5. GitHub will publish the site at `https://<username>.github.io/<repo-name>/`.
+
+Remember: editing files in `templates/` or `app.py` only changes the live Flask app when you run
+`python app.py`. To update the GitHub Pages version, you must re-run `python freeze.py` and push
+the `docs/` folder again.
+
 ## What's next?
 This is intentionally a simple, beginner-level version. Once you're comfortable with how it
 works, you can ask to upgrade it step by step — for example: a contact form, a blog/publications

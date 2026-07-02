@@ -63,8 +63,18 @@ research_interests = [
 # --- Data for the Skills page ---
 # Each key is a skill category, and each value is a list of specific skills.
 skills = {
-    "CFD": ["ANSYS Fluent", "COMSOL", "OpenFOAM"],
-    "Programming": ["Python", "MATLAB"],
+    "Designing Tools": ["AutoCAD", "SolidWorks", "SpaceClaim"],
+    "CFD": [
+        "ANSYS Fluent Meshing",
+        "ANSYS Fluent Solver",
+        "ICEM CFD",
+        "CFX",
+        "CFD-Post",
+        "COMSOL",
+        "OpenFOAM",
+        "ParaView",
+    ],
+    "Programming": ["Python", "MATLAB", "C++"],
     "Machine Learning": ["scikit-learn", "XGBoost", "SHAP", "TensorFlow/JAX"],
     "Heat Transfer": ["Flow boiling", "Two-phase flow", "Thermal management"],
     "Experimental": [
@@ -72,21 +82,94 @@ skills = {
         "Pressure drop measurement",
         "Flow visualization",
     ],
+    "Other": ["Scientific Writing", "Literature Review", "Microsoft Office"],
 }
+
+# --- Data for the Education section (used on the About page) ---
+education = [
+    {
+        "degree": "Ph.D. in Mechanical and Aerospace Engineering",
+        "school": "University of Missouri-Columbia",
+        "years": "2025 - Present",
+    },
+    {
+        "degree": "B.E. in Mechanical Engineering",
+        "school": "Kathmandu University, Nepal (CGPA: 3.40)",
+        "years": "2017 - 2022",
+    },
+]
+
+# --- Data for the Experience section (used on the About page) ---
+experience = [
+    {
+        "title": "Graduate Research Assistant",
+        "place": "University of Missouri-Columbia",
+        "years": "Jan 2025 - Present",
+        "details": [
+            "Conducting two-phase flow visualization using ANSYS Fluent",
+            "Analyzing flow visualization of electric motor cooling channels",
+        ],
+    },
+    {
+        "title": "Graduate Teaching Assistant",
+        "place": "University of Missouri-Columbia",
+        "years": "Aug 2025 - Present",
+        "details": [
+            "Instructed and evaluated around 120 students in MAE 2300: Thermodynamics",
+        ],
+    },
+    {
+        "title": "Design Engineer",
+        "place": "Precise Hydro Engineering & Construction Pvt. Ltd.",
+        "years": "Nov 2022 - June 2024",
+        "details": [
+            "Performed detailed hydromechanical design work on hydropower components",
+            "Conducted site visits and inspection documentation",
+        ],
+    },
+    {
+        "title": "Mechanical Engineer",
+        "place": "Mega Hydro and Engineering Pvt. Ltd.",
+        "years": "Sep 2021 - Oct 2022",
+        "details": [
+            "Supervised fabrication of hydromechanical components",
+            "Project coordination and monitoring",
+        ],
+    },
+]
+
+# --- Data for the Publications section (used on the About page) ---
+publications = [
+    {
+        "title": "Development of Condition Monitoring of Hydropower System Using Vibration Sensor",
+        "authors": "Aryal, B., Paudel, S., et al.",
+        "venue": "VETOMAC 2022 (Under Review)",
+        "year": "2022",
+    },
+    {
+        "title": "Design, Fabrication and Testing of Hydrocyclone Separator as Sediment Separation System",
+        "authors": "Aryal, B., Gurung, P., et al.",
+        "venue": "The Second International Conference on Engineering & Technology",
+        "year": "2019",
+    },
+]
 
 # --- Data for the Contact page ---
 # Update these links with your real information.
 contact_info = {
-    "email": "your.email@missouri.edu",
-    "linkedin": "https://www.linkedin.com/in/your-profile",
+    "email": "aryal.bibek.biz@gmail.com",
+    "phone": "573-529-4084",
+    "linkedin": "https://www.linkedin.com/in/bibekaryalin",
     "scholar": "https://scholar.google.com/citations?user=your-id",
-    "github": "https://github.com/your-username",
+    "github": "https://github.com/BibekAryal77",
     "orcid": "https://orcid.org/your-orcid-id",
 }
 
 
 # --- Routes ---
 # A "route" connects a URL (like "/") to a Python function that returns a page.
+# Routes below end with a trailing slash (e.g. "/about/") so that freeze.py
+# generates clean "about/index.html" files for GitHub Pages hosting.
 
 @app.route("/")
 def home():
@@ -94,25 +177,32 @@ def home():
     return render_template("index.html")
 
 
-@app.route("/about")
+@app.route("/about/")
 def about():
-    # About page: shows the professional summary and research interests list.
-    return render_template("about.html", research_interests=research_interests)
+    # About page: shows the professional summary, education, experience,
+    # publications, and research interests list.
+    return render_template(
+        "about.html",
+        research_interests=research_interests,
+        education=education,
+        experience=experience,
+        publications=publications,
+    )
 
 
-@app.route("/projects")
+@app.route("/projects/")
 def projects_page():
     # Projects page: loops over the "projects" list above to build project cards.
     return render_template("projects.html", projects=projects)
 
 
-@app.route("/skills")
+@app.route("/skills/")
 def skills_page():
     # Skills page: loops over the "skills" dictionary to build grouped skill lists.
     return render_template("skills.html", skills=skills)
 
 
-@app.route("/contact")
+@app.route("/contact/")
 def contact():
     # Contact page: shows email, LinkedIn, Google Scholar, GitHub, and ORCID links.
     return render_template("contact.html", contact=contact_info)
