@@ -1,0 +1,35 @@
+<!-- contact.html -->
+<!-- The Contact page. "contact" is a dictionary of links passed in from app.py.
+     Update the values in app.py's contact_info dictionary to change these links. -->
+{% extends "base.html" %}
+
+{% block title %}Contact | Bibek Aryal{% endblock %}
+
+{% block content %}
+<section class="page-section">
+    <h1>Contact</h1>
+
+    <ul class="contact-list">
+        <li>
+            <strong>Email:</strong>
+            <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+        </li>
+        <li>
+            <strong>LinkedIn:</strong>
+            <a href="{{ contact.linkedin }}" target="_blank" rel="noopener">{{ contact.linkedin }}</a>
+        </li>
+        <li>
+            <strong>Google Scholar:</strong>
+            <a href="{{ contact.scholar }}" target="_blank" rel="noopener">{{ contact.scholar }}</a>
+        </li>
+        <li>
+            <strong>GitHub:</strong>
+            <a href="{{ contact.github }}" target="_blank" rel="noopener">{{ contact.github }}</a>
+        </li>
+        <li>
+            <strong>ORCID:</strong>
+            <a href="{{ contact.orcid }}" target="_blank" rel="noopener">{{ contact.orcid }}</a>
+        </li>
+    </ul>
+</section>
+{% endblock %}

@@ -1,0 +1,29 @@
+<!-- index.html -->
+<!-- This is the Home page. It "extends" base.html, so it automatically gets the
+     navbar, footer, and CSS link from base.html. We only need to write the middle part. -->
+{% extends "base.html" %}
+
+{% block title %}Home | Bibek Aryal{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <img src="{{ url_for('static', filename='images/profile.jpg') }}"
+         alt="Photo of Bibek Aryal" class="profile-pic">
+
+    <h1>Bibek Aryal</h1>
+    <h2>Ph.D. Student in Mechanical Engineering</h2>
+
+    <p class="intro">
+        I work on heat transfer, two-phase flow, flow boiling, CFD simulation,
+        and machine-learning-based thermal-fluid modeling.
+    </p>
+
+    <!-- Buttons that link to the other pages -->
+    <div class="button-group">
+        <a href="{{ url_for('about') }}" class="btn">About</a>
+        <a href="{{ url_for('projects_page') }}" class="btn">Projects</a>
+        <a href="{{ url_for('skills_page') }}" class="btn">Skills</a>
+        <a href="{{ url_for('contact') }}" class="btn">Contact</a>
+    </div>
+</section>
+{% endblock %}

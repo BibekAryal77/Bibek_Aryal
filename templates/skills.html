@@ -1,0 +1,26 @@
+<!-- skills.html -->
+<!-- The Skills page. "skills" is a Python dictionary passed in from app.py, where
+     each key is a category name and each value is a list of skills in that category. -->
+{% extends "base.html" %}
+
+{% block title %}Skills | Bibek Aryal{% endblock %}
+
+{% block content %}
+<section class="page-section">
+    <h1>Skills</h1>
+
+    <div class="skills-grid">
+        <!-- .items() loops through each (category, skill_list) pair in the dictionary -->
+        {% for category, skill_list in skills.items() %}
+        <div class="skill-group">
+            <h3>{{ category }}</h3>
+            <ul>
+                {% for skill in skill_list %}
+                <li>{{ skill }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

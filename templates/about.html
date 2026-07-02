@@ -1,0 +1,28 @@
+<!-- about.html -->
+<!-- The About page. "research_interests" is a Python list passed in from app.py
+     (see the about() function). We loop over it with a Jinja for-loop tag. -->
+{% extends "base.html" %}
+
+{% block title %}About | Bibek Aryal{% endblock %}
+
+{% block content %}
+<section class="page-section">
+    <h1>About Me</h1>
+
+    <p>
+        I am a mechanical engineering Ph.D. student at the University of
+        Missouri&ndash;Columbia. My research focuses on two-phase flow, flow
+        boiling, CFD simulation, and thermal management. I am interested in
+        combining experiments, numerical simulation, and machine learning to
+        improve heat transfer prediction and design.
+    </p>
+
+    <h2>Research Interests</h2>
+    <ul class="interest-list">
+        <!-- The for loop below repeats for every item in the research_interests list -->
+        {% for interest in research_interests %}
+        <li>{{ interest }}</li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}
